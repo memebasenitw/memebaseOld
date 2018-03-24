@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.2.0/fabric.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+<body>
+	<canvas id="meme" width="600" height="400"></canvas>
+	<button onclick="addTextBox();">Add Text Box</button>
+	<a href="" id="save">Save Image</a>
+	<script>
+        var canvas = window.__canvas = new fabric.Canvas('meme');
+
+        function addTextBox() {
+            var rect = new fabric.Textbox('Add your text here', {
+                maxWidth: 150,
+                height: 120,
+                breakWords: true,
+                textAlign: 'center',
+                backgroundColor: 'rgba(211,211,211,0.1)'
+            });
+            canvas.add(rect).setActiveObject(rect);
+            canvas.renderAll();
+        }
+        new fabric.Image.fromURL('http://localhost:8000/static/images/Two-Buttons.jpg', function (oImg) {
+            canvas.setBackgroundImage(oImg);
+            canvas.renderAll();
+        }, {crossOrigin: 'Anonymous'});
+        downloadCanvas = function (link, filename) {
+            link.href = canvas.toDataURL({
+                format: 'png',
+                multiplier: 1
+            });
+            link.download = filename;
+        };
+        document.getElementById('save').addEventListener('click', function () {
+            downloadCanvas(event.target, 'meme.png');
+        }, false);
+
+	</script>
+</body>
+</html>
