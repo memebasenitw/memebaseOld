@@ -18,6 +18,10 @@ def register(request):
             username = userObj['username']
             email = userObj['email']
             password = userObj['password']
+
+            if request.POST['signInType'] == "google" or request.POST['signInType'] == "facebook":
+                password = ""
+
             if isValidEmail(email):
                 if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
                     User.objects.create_user(username, email, password)
