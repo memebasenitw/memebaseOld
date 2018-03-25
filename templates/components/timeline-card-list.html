@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<div class="thumbnail timeline-card">
+    <img src="{% static 'images/default-profile.png' %}">
+    <hr>
+
+    <div class="caption timeline-action-container">
+        <p class="timeline-card-status">
+            <span class="timeline-card-status-likes"> 18 likes</span>
+            <span class="timeline-card-status-comments"> 23 comments</span>
+            <span class="timeline-card-status-created-by"> created by Anurag</span>
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary timeline-card-like" role="button">
+                <!--<img src="{% static 'images/default-profile.png' %}">-->
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </a>
+            <a href="#" class="btn btn-default timeline-card-unlike" role="button">
+                <!--<img src="{% static 'images/default-profile.png' %}">-->
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </a>
+            <a href="#" class="btn btn-default timeline-card-share" role="button">
+                <!--<img src="{% static 'images/default-profile.png' %}">-->
+                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+            </a>
+        </p>
+    </div>
+    <hr>
+</div>

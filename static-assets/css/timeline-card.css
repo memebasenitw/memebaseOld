@@ -1,0 +1,30 @@
+.timeline-card {
+    border : none;
+}
+
+.timeline-card .timeline-card-status .timeline-card-status-created-by {
+    float : right;
+}
+
+.timeline-card .timeline-card-like > img{
+    width : 20px;
+    height : 20px;
+}
+
+.timeline-card .timeline-card-unlike > img{
+    width : 20px;
+    height : 20px;
+}
+
+.timeline-card .timeline-card-share {
+    float : right;
+}
+.timeline-card .timeline-card-share > img{
+    width : 20px;
+    height : 20px;
+}
+
+.timeline-card .timeline-action-container {
+    margin-left : 50px;
+    margin-right : 50px;
+}
