@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django import forms
@@ -36,6 +36,18 @@ def register(request):
     else:
         form = UserRegistrationForm()
     return render(request, 'login_signup/register.html', {'form': form})
+
+
+def login_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    else:
+        login(request)
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 
 def isValidEmail(email):
