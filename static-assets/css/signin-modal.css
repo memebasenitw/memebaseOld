@@ -1,0 +1,22 @@
+.sign-in-modal {
+
+}
+
+.sign-in-modal .close {
+    margin : 2px;
+}
+
+.sign-in-modal  .sign-in-modal-or-decorator {
+    position : relative;
+    top: 37px;
+    width: 100px;
+    border: none;
+}
+
+.sign-in-modal .sign-in-modal-social-login {
+    text-align : center;
+}
+
+.sign-in-modal .sign-in-modal-social-login span {
+    margin-left : 20px;
+}
