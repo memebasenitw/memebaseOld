@@ -5,7 +5,6 @@
 </head>
 <body>
     {% if user.is_authenticated %}
-    <p>hello</p>
     <p>welcome {{ user.username }}</p>
     <p><a href="/logout">Logout</a></p>
     {% else %}

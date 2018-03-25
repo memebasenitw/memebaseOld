@@ -19,15 +19,12 @@ def register(request):
             email = userObj['email']
             password = userObj['password']
 
-            if request.POST['signInType'] == "google" or request.POST['signInType'] == "facebook":
-                password = ""
-
             if isValidEmail(email):
                 if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):
                     User.objects.create_user(username, email, password)
                     user = authenticate(username=username, password=password)
                     login(request, user)
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect("/")
                 else:
                     return HttpResponse('Looks like a username with that email or password already exists', status=400)
             else:
@@ -39,15 +36,26 @@ def register(request):
 
 
 def login_view(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('/')
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        if isValidEmail(email=email):
+            username = User.objects.get(email=email.lower()).username
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect("/")
+        else:
+            return HttpResponse('please enter valid email id', status=400)
     else:
-        login(request)
+        if request.user.is_authenticated():
+            return HttpResponseRedirect("/")
+        else:
+            return render(request, 'login_signup/login.html')
 
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect("/")
 
 
 def isValidEmail(email):

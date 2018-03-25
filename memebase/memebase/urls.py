@@ -14,14 +14,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
-
-from memebase.login_signup import views as login_signup_views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', login_signup_views.login,  {'template_name': 'login_signup/login.html'}),
-    url(r'^logout/$', login_signup_views.logout, {'template_name': 'login_signup/login.html'}),
+    url(r'^login/$', 'login_signup.views.login_view'),
+    url(r'^logout/$', 'login_signup.views.logout_view'),
     url(r'^register/$', include('login_signup.urls')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     url(r'^', include('home.urls')),
